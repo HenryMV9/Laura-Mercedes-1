@@ -23,11 +23,100 @@
   padding: var(--spacing-3xl) 0;
 }
 
-.founder-image {
+.about-slideshow-wrapper {
+  position: relative;
   width: 100%;
   height: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.about-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  pointer-events: none;
+}
+
+.about-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.founder-image {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 4px;
+}
+
+.about-slideshow-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--color-black);
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.about-slideshow-nav:hover {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+}
+
+.about-prev {
+  left: var(--spacing-md);
+}
+
+.about-next {
+  right: var(--spacing-md);
+}
+
+.about-slideshow-dots {
+  position: absolute;
+  bottom: var(--spacing-md);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--spacing-sm);
+  z-index: 10;
+}
+
+.about-slideshow-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.about-slideshow-dot.active,
+.about-slideshow-dot:hover {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  transform: scale(1.2);
 }
 
 .founder-content h2 {
@@ -146,6 +235,78 @@
 .form-textarea {
   min-height: 150px;
   resize: vertical;
+}
+
+.services-detail {
+  padding: var(--spacing-3xl) 0;
+}
+
+.service-item-luxury {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-3xl);
+  align-items: center;
+  margin-bottom: var(--spacing-3xl);
+  padding: var(--spacing-3xl) 0;
+}
+
+.service-item-luxury:not(:last-child) {
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.service-item-luxury.reverse {
+  direction: rtl;
+}
+
+.service-item-luxury.reverse > * {
+  direction: ltr;
+}
+
+.service-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+}
+
+.service-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-slow);
+}
+
+.service-item-luxury:hover .service-image {
+  transform: scale(1.05);
+}
+
+.service-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+  pointer-events: none;
+}
+
+.service-content-luxury {
+  padding: var(--spacing-lg);
+}
+
+.service-content-luxury h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-black);
+}
+
+.service-content-luxury p {
+  color: var(--color-gray-700);
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-xl);
 }
 
 .services-grid-page {
@@ -278,7 +439,20 @@
     gap: var(--spacing-xl);
   }
 
-  .founder-image {
+  .about-slideshow-wrapper {
+    height: 400px;
+  }
+
+  .service-item-luxury {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .service-item-luxury.reverse {
+    direction: ltr;
+  }
+
+  .service-image-wrapper {
     height: 400px;
   }
 }
@@ -286,5 +460,31 @@
 @media (max-width: 768px) {
   .services-grid-page {
     grid-template-columns: 1fr;
+  }
+
+  .service-image-wrapper {
+    height: 350px;
+  }
+
+  .service-content-luxury {
+    padding: var(--spacing-sm);
+  }
+
+  .about-slideshow-wrapper {
+    height: 350px;
+  }
+
+  .about-slideshow-nav {
+    width: 35px;
+    height: 35px;
+    font-size: 1.25rem;
+  }
+
+  .about-prev {
+    left: var(--spacing-sm);
+  }
+
+  .about-next {
+    right: var(--spacing-sm);
   }
 }

@@ -58,29 +58,46 @@
     </div>
   </section>
 
-  <section class="about-founder">
-    <div class="container">
-      <div>
-        <img src="/homepage-picture-2.jpeg" alt="Our Founder" class="founder-image">
+  <section class="about-founder container">
+    <div class="about-slideshow-wrapper">
+      <div class="about-slideshow-container">
+        <div class="about-slide active">
+          <img src="/homepage-picture-1.jpeg" alt="Luxury Beauty Services" class="founder-image">
+        </div>
+        <div class="about-slide">
+          <img src="/homepage-picture-2.jpeg" alt="Premium Hair Collection" class="founder-image">
+        </div>
+        <div class="about-slide">
+          <img src="/homepage-picture-4 copy.jpeg" alt="Expert Styling" class="founder-image">
+        </div>
+        <div class="about-slide">
+          <img src="/homepage-picture-7.jpeg" alt="Beautiful Results" class="founder-image">
+        </div>
+        <div class="about-slide">
+          <img src="/homepage-picture-9.jpeg" alt="Elegant Designs" class="founder-image">
+        </div>
       </div>
-      <div class="founder-content">
-        <p class="section-subtitle">Our Story</p>
-        <h2>Built on Passion, Driven by Excellence</h2>
-        <p>
-          Our journey began with a simple belief: every woman deserves access to premium quality hair and beauty products
-          without compromise. What started as a passion for helping women feel confident and beautiful has grown into
-          Nigeria's most trusted destination for luxury hair.
-        </p>
-        <p>
-          We carefully curate each piece in our collection, ensuring that only the finest products reach our clients.
-          From the texture of our hair extensions to the craftsmanship of our wigs, every detail matters.
-        </p>
-        <p>
-          Located in the heart of Abuja at Wuse 2, our atelier serves as a sanctuary where beauty meets expertise.
-          Our team of skilled professionals is dedicated to providing personalized consultations and exceptional service,
-          ensuring that each client leaves feeling not just satisfied, but truly transformed.
-        </p>
-      </div>
+      <button class="about-slideshow-nav about-prev" aria-label="Previous">‹</button>
+      <button class="about-slideshow-nav about-next" aria-label="Next">›</button>
+      <div class="about-slideshow-dots"></div>
+    </div>
+    <div class="founder-content">
+      <p class="section-subtitle">Our Story</p>
+      <h2>Built on Passion, Driven by Excellence</h2>
+      <p>
+        Our journey began with a simple belief: every woman deserves access to premium quality hair and beauty products
+        without compromise. What started as a passion for helping women feel confident and beautiful has grown into
+        Nigeria's most trusted destination for luxury hair.
+      </p>
+      <p>
+        We carefully curate each piece in our collection, ensuring that only the finest products reach our clients.
+        From the texture of our hair extensions to the craftsmanship of our wigs, every detail matters.
+      </p>
+      <p>
+        Located in the heart of Abuja at Wuse 2, our atelier serves as a sanctuary where beauty meets expertise.
+        Our team of skilled professionals is dedicated to providing personalized consultations and exceptional service,
+        ensuring that each client leaves feeling not just satisfied, but truly transformed.
+      </p>
     </div>
   </section>
 
@@ -196,6 +213,46 @@
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
   </a>
+
+  <script>
+    let currentAboutSlide = 0;
+    const aboutSlides = document.querySelectorAll('.about-slide');
+    const aboutDotsContainer = document.querySelector('.about-slideshow-dots');
+
+    aboutSlides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.classList.add('about-slideshow-dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToAboutSlide(index));
+      aboutDotsContainer.appendChild(dot);
+    });
+
+    function showAboutSlide(index) {
+      aboutSlides.forEach(slide => slide.classList.remove('active'));
+      document.querySelectorAll('.about-slideshow-dot').forEach(dot => dot.classList.remove('active'));
+
+      currentAboutSlide = (index + aboutSlides.length) % aboutSlides.length;
+      aboutSlides[currentAboutSlide].classList.add('active');
+      document.querySelectorAll('.about-slideshow-dot')[currentAboutSlide].classList.add('active');
+    }
+
+    function goToAboutSlide(index) {
+      showAboutSlide(index);
+    }
+
+    function nextAboutSlide() {
+      showAboutSlide(currentAboutSlide + 1);
+    }
+
+    function prevAboutSlide() {
+      showAboutSlide(currentAboutSlide - 1);
+    }
+
+    document.querySelector('.about-next').addEventListener('click', nextAboutSlide);
+    document.querySelector('.about-prev').addEventListener('click', prevAboutSlide);
+
+    setInterval(nextAboutSlide, 5000);
+  </script>
 
   <script type="module" src="/js/navigation.js"></script>
   <script type="module" src="/js/cart.js"></script>
