@@ -85,9 +85,9 @@
       </div>
 
       <div class="cart-actions">
-        <a href="/checkout.html" class="btn btn-primary btn-block" id="proceedToCheckout" disabled>
+        <button class="btn btn-primary btn-block" id="proceedToCheckout" disabled>
           Proceed to Checkout
-        </a>
+        </button>
         <a href="/shop.html" class="btn btn-outline btn-block">
           Continue Shopping
         </a>
@@ -165,7 +165,60 @@
     </svg>
   </a>
 
+  <div id="checkoutModal" class="checkout-modal">
+    <div class="checkout-modal-content">
+      <button class="checkout-modal-close" id="closeCheckoutModal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="checkout-modal-header">
+        <h2>Complete Your Order</h2>
+        <p>Enter your details to proceed with payment</p>
+      </div>
+
+      <form id="quickCheckoutForm" class="checkout-form">
+        <div class="form-group">
+          <label for="customerName">Full Name *</label>
+          <input type="text" id="customerName" name="customerName" required placeholder="Enter your full name">
+        </div>
+
+        <div class="form-group">
+          <label for="customerEmail">Email Address *</label>
+          <input type="email" id="customerEmail" name="customerEmail" required placeholder="your@email.com">
+        </div>
+
+        <div class="form-group">
+          <label for="customerPhone">Phone Number *</label>
+          <input type="tel" id="customerPhone" name="customerPhone" required placeholder="+234 XXX XXX XXXX">
+        </div>
+
+        <div class="checkout-summary">
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span id="modalSubtotal">₦0</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping:</span>
+            <span>₦5,000</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span id="modalTotal">₦0</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="proceedToPayment">
+          Proceed to Payment
+        </button>
+      </form>
+    </div>
+  </div>
+
   <script type="module" src="/js/navigation.js"></script>
   <script type="module" src="/js/cart.js"></script>
+  <script type="module" src="/js/cart-page.js"></script>
 </body>
 </html>
