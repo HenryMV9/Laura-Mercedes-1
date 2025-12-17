@@ -1,9 +1,11 @@
 :root {
   --color-white: #FFFFFF;
   --color-black: #000000;
-  --color-gold: #C8A882;
-  --color-gold-light: #E5D4BD;
-  --color-gold-dark: #A08760;
+  --color-gold: #D4AF37;
+  --color-gold-light: #F4E5B8;
+  --color-gold-dark: #B8941E;
+  --color-primary: #059669;
+  --color-primary-dark: #047857;
   --color-gray-50: #FAFAFA;
   --color-gray-100: #F5F5F5;
   --color-gray-200: #EEEEEE;
@@ -143,40 +145,64 @@ input, textarea, select {
 }
 
 .btn-primary {
-  background-color: var(--color-black);
+  background-color: var(--color-primary);
   color: var(--color-white);
-  border-color: var(--color-black);
+  border-color: var(--color-primary);
+  font-weight: 600;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-gray-800);
-  border-color: var(--color-gray-800);
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 20px rgba(5, 150, 105, 0.35);
+}
+
+.btn-primary:disabled {
+  background-color: var(--color-gray-400);
+  border-color: var(--color-gray-400);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .btn-secondary {
   background-color: var(--color-white);
-  color: var(--color-black);
-  border-color: var(--color-black);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  font-weight: 600;
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-black);
+  background-color: var(--color-primary);
   color: var(--color-white);
+  box-shadow: 0 4px 20px rgba(5, 150, 105, 0.25);
 }
 
 .btn-gold {
   background-color: var(--color-gold);
   color: var(--color-white);
   border-color: var(--color-gold);
+  font-weight: 600;
 }
 
 .btn-gold:hover {
   background-color: var(--color-gold-dark);
   border-color: var(--color-gold-dark);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-gray-700);
+  border-color: var(--color-gray-300);
+  font-weight: 500;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-gray-100);
+  border-color: var(--color-gray-400);
 }
 
 .section {
