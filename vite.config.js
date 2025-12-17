@@ -13,7 +13,6 @@ export default defineConfig({
         contact: resolve(__dirname, 'contact.html'),
         services: resolve(__dirname, 'services.html'),
         cart: resolve(__dirname, 'cart.html'),
-        checkout: resolve(__dirname, 'checkout.html'),
         faq: resolve(__dirname, 'faq.html'),
         policies: resolve(__dirname, 'policies.html')
       }
