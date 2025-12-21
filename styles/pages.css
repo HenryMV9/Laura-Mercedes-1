@@ -432,6 +432,85 @@
   margin-bottom: var(--spacing-md);
 }
 
+.services-intro-banner {
+  background: linear-gradient(135deg, #F9F6F0 0%, #F2EDE3 50%, #F9F6F0 100%);
+  padding: calc(var(--spacing-3xl) * 1.3) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-intro-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 168, 130, 0.3), transparent);
+}
+
+.services-intro-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 168, 130, 0.3), transparent);
+}
+
+.services-intro-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl);
+}
+
+.services-intro-divider {
+  flex: 0 0 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  position: relative;
+}
+
+.services-intro-divider::before {
+  content: '◆';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.625rem;
+  color: var(--color-gold);
+}
+
+.services-intro-title {
+  font-family: var(--font-primary);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--color-black);
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.page-header {
+  padding: calc(73px + var(--spacing-3xl)) 0 var(--spacing-2xl);
+  text-align: center;
+  background: linear-gradient(135deg, #FDFBF7 0%, #F5EFE7 100%);
+}
+
+.page-header h1 {
+  margin-bottom: var(--spacing-md);
+  letter-spacing: 0.05em;
+}
+
+.page-header p {
+  font-size: 1.125rem;
+  color: var(--color-gray-600);
+  margin: 0;
+}
+
 @media (max-width: 1024px) {
   .about-founder,
   .contact-grid {
@@ -455,9 +534,30 @@
   .service-image-wrapper {
     height: 400px;
   }
+
+  .services-intro-divider {
+    flex: 0 0 40px;
+  }
+
+  .services-intro-title {
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  }
 }
 
 @media (max-width: 768px) {
+  .services-intro-content {
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-md);
+  }
+
+  .services-intro-divider {
+    flex: 0 0 30px;
+  }
+
+  .services-intro-title {
+    white-space: normal;
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+  }
   .services-grid-page {
     grid-template-columns: 1fr;
   }

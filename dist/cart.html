@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Complete your purchase at Luxury Atelier - Secure checkout for premium hair and beauty products.">
-  <title>Checkout - Luxury Atelier</title>
+  <meta name="description" content="Your shopping cart at Luxury Atelier - Review and manage your premium hair and beauty products.">
+  <title>Shopping Cart - Luxury Atelier</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/styles/global.css">
-  <link rel="stylesheet" href="/styles/navigation.css">
-  <link rel="stylesheet" href="/styles/cart.css">
-  <link rel="stylesheet" href="/styles/footer.css">
+  <script type="module" crossorigin src="/assets/cart-CuCbkbA8.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/cart-oIVssBdR.css">
+  <link rel="stylesheet" crossorigin href="/assets/cart-F7SG5nbz.css">
 </head>
 <body>
   <nav class="navbar">
@@ -35,7 +34,7 @@
             <path d="m21 21-4.35-4.35"></path>
           </svg>
         </div>
-        <a href="/cart.html" class="nav-icon">
+        <a href="/cart.html" class="nav-icon active">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M9 2L7 8h10l-2-6H9z"></path>
             <path d="M7 8v11a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V8"></path>
@@ -51,128 +50,69 @@
     </div>
   </nav>
 
-  <section class="page-header checkout-header">
+  <section class="page-header cart-header">
     <div class="container">
-      <h1>Checkout</h1>
-      <p>Complete your luxury purchase securely</p>
+      <h1>Your Shopping Cart</h1>
+      <p>Review and manage your selected items</p>
     </div>
   </section>
 
-  <section class="checkout-container container">
-    <form id="checkoutForm" class="checkout-form">
-      <div class="checkout-columns">
-        <div class="checkout-column customer-info">
-          <h2>Customer Information</h2>
+  <section class="cart-container container">
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <h2>Your cart is currently empty</h2>
+        <p>Explore our collections and find your perfect hair and beauty products.</p>
+        <a href="/shop.html" class="btn btn-gold">Continue Shopping</a>
+      </div>
+    </div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input type="text" id="firstName" name="firstName" required>
-            </div>
-            <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" name="lastName" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group full-width">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group full-width">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" required>
-            </div>
-          </div>
-
-          <h2>Shipping Address</h2>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="address1">Street Address</label>
-              <input type="text" id="address1" name="address1" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="city">City</label>
-              <input type="text" id="city" name="city" required>
-            </div>
-            <div class="form-group">
-              <label for="state">State</label>
-              <input type="text" id="state" name="state" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="zipCode">ZIP/Postal Code</label>
-              <input type="text" id="zipCode" name="zipCode" required>
-            </div>
-            <div class="form-group">
-              <label for="country">Country</label>
-              <select id="country" name="country" required>
-                <option value="NG">Nigeria</option>
-                <option value="Other">Other Countries</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="specialInstructions">Special Instructions (Optional)</label>
-            <textarea id="specialInstructions" name="specialInstructions"></textarea>
-          </div>
+    <div class="cart-summary" id="cartSummary">
+      <h2>Order Summary</h2>
+      <div class="summary-section">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="subtotal">0.00</span>
         </div>
-
-        <div class="checkout-column order-summary">
-          <h2>Order Summary</h2>
-
-          <div class="cart-items" id="checkoutCartItems">
-            <!-- Cart items will be dynamically populated here -->
-          </div>
-
-          <div class="summary-section">
-            <div class="summary-row">
-              <span>Subtotal</span>
-              <span id="subtotal">0.00</span>
-            </div>
-            <div class="summary-row">
-              <span>Shipping</span>
-              <span id="shipping">Calculated at checkout</span>
-            </div>
-            <div class="summary-row total">
-              <span>Total</span>
-              <span id="total">0.00</span>
-            </div>
-          </div>
-
-          <div class="payment-section">
-            <h2>Payment Method</h2>
-            <div id="card-element">
-              <!-- A Stripe Card Element will be inserted here -->
-            </div>
-            <div id="card-errors" role="alert"></div>
-          </div>
-
-          <div class="checkout-actions">
-            <button type="submit" class="btn btn-primary btn-block" id="placeOrderButton">
-              Place Order
-            </button>
-          </div>
-
-          <div class="order-security">
-            <p>
-              <strong>Secure Checkout:</strong> Your payment information is encrypted and processed securely.
-            </p>
-          </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span id="shipping">Calculated at checkout</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span id="total">0.00</span>
         </div>
       </div>
-    </form>
+
+      <div class="cart-actions">
+        <a href="/checkout.html" class="btn btn-primary btn-block" id="proceedToCheckout" disabled>
+          Proceed to Checkout
+        </a>
+        <a href="/shop.html" class="btn btn-outline btn-block">
+          Continue Shopping
+        </a>
+      </div>
+
+      <div class="cart-promo">
+        <h3>Have a Promo Code?</h3>
+        <div class="promo-input">
+          <input type="text" placeholder="Enter promo code" id="promoCode">
+          <button class="btn btn-secondary">Apply</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section recommendations">
+    <div class="container">
+      <div class="section-title">
+        <h2>You Might Also Like</h2>
+        <p>Complete your luxury hair and beauty collection</p>
+      </div>
+
+      <div class="recommendations-grid" id="recommendedProducts">
+        <!-- Recommended products will be dynamically loaded here -->
+      </div>
+    </div>
   </section>
 
   <footer class="footer">
@@ -237,9 +177,5 @@
     </svg>
   </a>
 
-  <script src="https://js.stripe.com/v3/"></script>
-  <script type="module" src="/js/navigation.js"></script>
-  <script type="module" src="/js/cart.js"></script>
-  <script type="module" src="/js/checkout.js"></script>
 </body>
 </html>
