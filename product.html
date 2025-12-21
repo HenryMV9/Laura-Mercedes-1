@@ -164,7 +164,11 @@
 
       document.title = `${product.name} - Luxury Atelier`;
 
-      const galleryImages = [product.main_image, ...(product.gallery_images || [])];
+      const galleryImages = [
+        product.main_image,
+        ...(product.gallery_images || [])
+      ].filter(img => img && img.trim() !== '');
+
       const hasDiscount = product.compare_at_price && product.compare_at_price > product.price;
       const savings = hasDiscount ? Math.round((1 - product.price / product.compare_at_price) * 100) : 0;
 
@@ -179,15 +183,17 @@
         <div class="product-container">
           <div class="product-gallery">
             <div class="main-image-wrapper">
-              <img src="${galleryImages[0]}" alt="${product.name}" class="main-image" id="mainImage">
+              <img src="${galleryImages.length > 0 ? galleryImages[0] : 'https://images.pexels.com/photos/3993324/pexels-photo-3993324.jpeg'}" alt="${product.name}" class="main-image" id="mainImage">
             </div>
-            <div class="gallery-thumbnails">
-              ${galleryImages.map((img, i) => `
-                <div class="thumbnail ${i === 0 ? 'active' : ''}" data-image="${img}">
-                  <img src="${img}" alt="${product.name}">
-                </div>
-              `).join('')}
-            </div>
+            ${galleryImages.length > 0 ? `
+              <div class="gallery-thumbnails">
+                ${galleryImages.map((img, i) => `
+                  <div class="thumbnail ${i === 0 ? 'active' : ''}" data-image="${img}">
+                    <img src="${img}" alt="${product.name}">
+                  </div>
+                `).join('')}
+              </div>
+            ` : ''}
           </div>
 
           <div class="product-details">

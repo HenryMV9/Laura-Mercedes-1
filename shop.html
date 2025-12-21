@@ -280,11 +280,17 @@
       grid.innerHTML = filteredProducts.map(product => {
         const hasDiscount = product.compare_at_price && product.compare_at_price > product.price;
 
+        const displayImage = product.main_image && product.main_image.trim() !== ''
+          ? product.main_image
+          : (product.gallery_images && product.gallery_images.length > 0
+            ? product.gallery_images[0]
+            : 'https://images.pexels.com/photos/3993324/pexels-photo-3993324.jpeg');
+
         return `
           <div class="product-card">
             <div class="product-image-wrapper">
               <a href="/product.html?slug=${product.slug}">
-                <img src="${product.main_image}" alt="${product.name}" class="product-image">
+                <img src="${displayImage}" alt="${product.name}" class="product-image">
               </a>
               ${product.featured ? '<span class="product-badge">Featured</span>' : ''}
               ${!product.in_stock ? '<span class="product-badge" style="background: var(--color-gray-600);">Sold Out</span>' : ''}
