@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Luxury hair and beauty services in Abuja, Nigeria. Professional wig installation, lash extensions, braiding, and beauty consultations.">
-  <title>LAURA MERCEDES </title>
+  <meta name="description" content="Your shopping cart at Luxury Atelier - Review and manage your premium hair and beauty products.">
+  <title>Shopping Cart - Laura Mercedes</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/styles/global.css">
-  <link rel="stylesheet" href="/styles/navigation.css">
-  <link rel="stylesheet" href="/styles/pages.css">
-  <link rel="stylesheet" href="/styles/footer.css">
+  <script type="module" crossorigin src="/assets/cart-Bgq2o2gj.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/cart-DRHFGjFt.js">
+  <link rel="modulepreload" crossorigin href="/assets/supabase-client-plvbIh6d.js">
+  <link rel="stylesheet" crossorigin href="/assets/cart-tr4iUzWe.css">
+  <link rel="stylesheet" crossorigin href="/assets/cart-D93Vh7yW.css">
 </head>
 <body>
   <nav class="navbar">
@@ -23,7 +24,7 @@
       <ul class="nav-menu">
         <li><a href="/" class="nav-link">Home</a></li>
         <li><a href="/shop.html" class="nav-link">Shop</a></li>
-        <li><a href="/services.html" class="nav-link active">Services</a></li>
+        <li><a href="/services.html" class="nav-link">Services</a></li>
         <li><a href="/about.html" class="nav-link">About</a></li>
         <li><a href="/contact.html" class="nav-link">Contact</a></li>
       </ul>
@@ -35,13 +36,13 @@
             <path d="m21 21-4.35-4.35"></path>
           </svg>
         </div>
-        <a href="/cart.html" class="nav-icon">
+        <a href="/cart.html" class="nav-icon active">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="9" cy="21" r="1"></circle>
             <circle cx="20" cy="21" r="1"></circle>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
           </svg>
-          <span class="cart-badge" style="display: none;">0</span>
+          <span class="cart-badge">0</span>
         </a>
         <div class="mobile-menu-toggle">
           <span></span>
@@ -52,94 +53,55 @@
     </div>
   </nav>
 
-  <section class="page-header services-header">
+  <section class="page-header cart-header">
     <div class="container">
-    </div>
- 
-    <div class="container">
-      <div class="services-intro-content">
-        <div class="services-intro-divider"></div>
-        <h2 class="services-intro-title">VIEW OUR LUXURY SERVICES</h2>
-        <div class="services-intro-divider"></div>
-      </div>
+      <h1>Your Shopping Cart</h1>
+      <p>Review and manage your selected items</p>
     </div>
   </section>
 
-  <section class="services-detail container">
-    <div class="service-item-luxury">
-      <div class="service-image-wrapper">
-        <img src="/homepage-picture-4.jpeg" alt="Professional Wig Installation" class="service-image">
-        <div class="service-image-overlay"></div>
-      </div>
-      <div class="service-content-luxury">
-        <h2>Wig Installation</h2>
-        <p>
-          Our professional wig installation service ensures a flawless, natural look.
-          Our expert stylists carefully measure, fit, and style your wig for maximum comfort
-          and confidence. We work with various hair types and textures to create a personalized
-          experience that enhances your unique beauty.
-        </p>
-        <a href="https://wa.me/2348143372835" class="btn btn-gold" target="_blank">BOOK AN APPOINTMENT </a>
+  <section class="cart-container container">
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <h2>Your cart is currently empty</h2>
+        <p>Explore our collections and find your perfect hair and beauty products.</p>
+        <a href="/shop.html" class="btn btn-gold">Continue Shopping</a>
       </div>
     </div>
 
-    <div class="service-item-luxury reverse">
-      <div class="service-image-wrapper">
-        <img src="/homepage-picture-5.jpeg" alt="Premium Lash Extensions" class="service-image">
-        <div class="service-image-overlay"></div>
+    <div class="cart-summary" id="cartSummary">
+      <h2>Order Summary</h2>
+      <div class="summary-section">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="subtotal">0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span id="shipping">Calculated at checkout</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span id="total">0.00</span>
+        </div>
       </div>
-      <div class="service-content-luxury">
-        <h2>Lash Extensions</h2>
-        <p>
-          Transform your look with our premium lash extension service. We offer
-          multiple styles from natural and subtle to dramatic and glamorous. Our
-          skilled technicians use high-quality, lightweight lashes that blend
-          seamlessly with your natural lashes, providing long-lasting beauty and comfort.
-        </p>
-        <a href="https://wa.me/2348143372835" class="btn btn-gold" target="_blank">BOOK AN APPOINTMENT</a>
-      </div>
-    </div>
 
-    <div class="service-item-luxury">
-      <div class="service-image-wrapper">
-        <img src="/homepage-picture-9.jpeg" alt="Expert Braiding Service" class="service-image">
-        <div class="service-image-overlay"></div>
+      <div class="cart-actions">
+        <button class="btn btn-primary btn-block" id="proceedToCheckout" disabled>
+          Proceed to Checkout
+        </button>
+        <a href="/shop.html" class="btn btn-outline btn-block">
+          Continue Shopping
+        </a>
       </div>
-      <div class="service-content-luxury">
-        <h2>Braiding Service</h2>
-        <p>
-          From traditional African braiding styles to modern protective looks, our
-          braiding service offers expert craftsmanship. Our skilled braiders use
-          premium hair extensions and meticulous techniques to create intricate,
-          beautiful braids that protect your hair and showcase your personal style.
-        </p>
-        <a href="https://wa.me/2348143372835" class="btn btn-gold" target="_blank">BOOK AN APPOINTMENT </a>
-      </div>
-    </div>
 
-    <div class="service-item-luxury reverse">
-      <div class="service-image-wrapper">
-        <img src="/homepage-picture-8.jpeg" alt="Personalized Beauty Consultation" class="service-image">
-        <div class="service-image-overlay"></div>
+      <div class="cart-promo">
+        <h3>Have a Promo Code?</h3>
+        <div class="promo-input">
+          <input type="text" placeholder="Enter promo code" id="promoCode">
+          <button class="btn btn-secondary">Apply</button>
+        </div>
       </div>
-      <div class="service-content-luxury">
-        <h2>Beauty Consultation</h2>
-        <p>
-          Our one-on-one beauty consultation provides personalized advice tailored
-          to your unique features and style preferences. Our expert consultants will
-          help you discover the perfect hair, makeup, and beauty solutions that
-          enhance your natural beauty and boost your confidence.
-        </p>
-        <a href="https://wa.me/2348143372835" class="btn btn-gold" target="_blank">BOOK AN APPOINTMENT</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section cta-section">
-    <div class="container">
-      <h2>Ready to Transform Your Look?</h2>
-      <p>Book a consultation or service today and experience luxury beauty.</p>
-      <a href="https://wa.me/2348143372835" class="btn btn-primary" target="_blank">Contact Us</a>
     </div>
   </section>
 
@@ -205,7 +167,57 @@
     </svg>
   </a>
 
-  <script type="module" src="/js/navigation.js"></script>
-  <script type="module" src="/js/cart.js"></script>
+  <div id="checkoutModal" class="checkout-modal">
+    <div class="checkout-modal-content">
+      <button class="checkout-modal-close" id="closeCheckoutModal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="checkout-modal-header">
+        <h2>Complete Your Order</h2>
+        <p>Enter your details to proceed with payment</p>
+      </div>
+
+      <form id="quickCheckoutForm" class="checkout-form">
+        <div class="form-group">
+          <label for="customerName">Full Name *</label>
+          <input type="text" id="customerName" name="customerName" required placeholder="Enter your full name">
+        </div>
+
+        <div class="form-group">
+          <label for="customerEmail">Email Address *</label>
+          <input type="email" id="customerEmail" name="customerEmail" required placeholder="your@email.com">
+        </div>
+
+        <div class="form-group">
+          <label for="customerPhone">Phone Number *</label>
+          <input type="tel" id="customerPhone" name="customerPhone" required placeholder="+234 XXX XXX XXXX">
+        </div>
+
+        <div class="checkout-summary">
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span id="modalSubtotal">₦0</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping:</span>
+            <span>₦5,000</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span id="modalTotal">₦0</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="proceedToPayment">
+          Proceed to Payment
+        </button>
+      </form>
+    </div>
+  </div>
+
 </body>
 </html>

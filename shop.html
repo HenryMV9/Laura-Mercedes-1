@@ -65,6 +65,8 @@
       Filter & Sort
     </button>
 
+    <div class="filters-backdrop" id="filtersBackdrop"></div>
+
     <div class="shop-content">
       <aside class="shop-filters" id="shopFilters">
         <button class="btn btn-secondary filter-close" id="filterClose" style="display: none;">
@@ -352,7 +354,7 @@
       applyFilters();
 
       if (window.innerWidth <= 1024) {
-        document.getElementById('shopFilters').classList.remove('active');
+        closeFilters();
       }
     });
 
@@ -380,12 +382,20 @@
 
     document.getElementById('mobileFilterToggle').addEventListener('click', () => {
       document.getElementById('shopFilters').classList.add('active');
+      document.getElementById('filtersBackdrop').classList.add('active');
       document.getElementById('filterClose').style.display = 'block';
+      document.body.style.overflow = 'hidden';
     });
 
-    document.getElementById('filterClose').addEventListener('click', () => {
+    function closeFilters() {
       document.getElementById('shopFilters').classList.remove('active');
-    });
+      document.getElementById('filtersBackdrop').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('filterClose').addEventListener('click', closeFilters);
+
+    document.getElementById('filtersBackdrop').addEventListener('click', closeFilters);
 
     await loadCategories();
     await loadProducts();

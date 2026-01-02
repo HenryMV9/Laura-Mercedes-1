@@ -487,9 +487,76 @@
 
   .checkout-modal-content {
     padding: var(--spacing-lg);
+    max-width: 95vw;
   }
 
   .checkout-modal-header {
     padding-right: var(--spacing-lg);
+  }
+
+  .checkout-modal-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-group label {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+    display: block;
+  }
+
+  .form-group input {
+    font-size: 1rem;
+    padding: var(--spacing-md);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .checkout-summary {
+    padding: var(--spacing-md);
+  }
+
+  .checkout-summary .summary-row {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .checkout-summary .summary-row.total {
+    font-size: 1.25rem;
+  }
+
+  .btn-block {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-modal {
+    padding: var(--spacing-sm);
+  }
+
+  .checkout-modal-content {
+    padding: var(--spacing-md);
+  }
+
+  .checkout-modal-header h2 {
+    font-size: 1.375rem;
+  }
+
+  .cart-summary,
+  .order-summary {
+    padding: var(--spacing-md);
+  }
+
+  .cart-summary h2 {
+    font-size: 1.25rem;
+  }
+
+  .summary-row {
+    font-size: 0.9375rem;
+  }
+
+  .summary-row.total {
+    font-size: 1.125rem;
   }
 }

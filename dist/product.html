@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Luxury hair and beauty services in Abuja, Nigeria. Professional wig installation, lash extensions, braiding, and beauty consultations.">
-  <title>LAURA MERCEDES </title>
+  <meta name="description" content="View product details">
+  <title>Product - LM Luxury Hair & Beauty Atelier</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/styles/global.css">
-  <link rel="stylesheet" href="/styles/navigation.css">
-  <link rel="stylesheet" href="/styles/pages.css">
-  <link rel="stylesheet" href="/styles/footer.css">
+  <script type="module" crossorigin src="/assets/product-9LHdYlES.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/cart-DRHFGjFt.js">
+  <link rel="modulepreload" crossorigin href="/assets/supabase-client-plvbIh6d.js">
+  <link rel="stylesheet" crossorigin href="/assets/cart-tr4iUzWe.css">
+  <link rel="stylesheet" crossorigin href="/assets/product-CrLO2lNt.css">
+  <link rel="stylesheet" crossorigin href="/assets/shop-AvUiwL2j.css">
 </head>
 <body>
   <nav class="navbar">
@@ -23,7 +25,7 @@
       <ul class="nav-menu">
         <li><a href="/" class="nav-link">Home</a></li>
         <li><a href="/shop.html" class="nav-link">Shop</a></li>
-        <li><a href="/services.html" class="nav-link active">Services</a></li>
+        <li><a href="/services.html" class="nav-link">Services</a></li>
         <li><a href="/about.html" class="nav-link">About</a></li>
         <li><a href="/contact.html" class="nav-link">Contact</a></li>
       </ul>
@@ -52,94 +54,18 @@
     </div>
   </nav>
 
-  <section class="page-header services-header">
-    <div class="container">
-    </div>
- 
-    <div class="container">
-      <div class="services-intro-content">
-        <div class="services-intro-divider"></div>
-        <h2 class="services-intro-title">VIEW OUR LUXURY SERVICES</h2>
-        <div class="services-intro-divider"></div>
-      </div>
+  <section class="product-section">
+    <div class="container" id="productContent">
+      <div class="loading" style="margin: 50px auto;"></div>
     </div>
   </section>
 
-  <section class="services-detail container">
-    <div class="service-item-luxury">
-      <div class="service-image-wrapper">
-        <img src="/homepage-picture-4.jpeg" alt="Professional Wig Installation" class="service-image">
-        <div class="service-image-overlay"></div>
-      </div>
-      <div class="service-content-luxury">
-        <h2>Wig Installation</h2>
-        <p>
-          Our professional wig installation service ensures a flawless, natural look.
-          Our expert stylists carefully measure, fit, and style your wig for maximum comfort
-          and confidence. We work with various hair types and textures to create a personalized
-          experience that enhances your unique beauty.
-        </p>
-        <a href="https://wa.me/2348143372835" class="btn btn-gold" target="_blank">BOOK AN APPOINTMENT </a>
-      </div>
-    </div>
-
-    <div class="service-item-luxury reverse">
-      <div class="service-image-wrapper">
-        <img src="/homepage-picture-5.jpeg" alt="Premium Lash Extensions" class="service-image">
-        <div class="service-image-overlay"></div>
-      </div>
-      <div class="service-content-luxury">
-        <h2>Lash Extensions</h2>
-        <p>
-          Transform your look with our premium lash extension service. We offer
-          multiple styles from natural and subtle to dramatic and glamorous. Our
-          skilled technicians use high-quality, lightweight lashes that blend
-          seamlessly with your natural lashes, providing long-lasting beauty and comfort.
-        </p>
-        <a href="https://wa.me/2348143372835" class="btn btn-gold" target="_blank">BOOK AN APPOINTMENT</a>
-      </div>
-    </div>
-
-    <div class="service-item-luxury">
-      <div class="service-image-wrapper">
-        <img src="/homepage-picture-9.jpeg" alt="Expert Braiding Service" class="service-image">
-        <div class="service-image-overlay"></div>
-      </div>
-      <div class="service-content-luxury">
-        <h2>Braiding Service</h2>
-        <p>
-          From traditional African braiding styles to modern protective looks, our
-          braiding service offers expert craftsmanship. Our skilled braiders use
-          premium hair extensions and meticulous techniques to create intricate,
-          beautiful braids that protect your hair and showcase your personal style.
-        </p>
-        <a href="https://wa.me/2348143372835" class="btn btn-gold" target="_blank">BOOK AN APPOINTMENT </a>
-      </div>
-    </div>
-
-    <div class="service-item-luxury reverse">
-      <div class="service-image-wrapper">
-        <img src="/homepage-picture-8.jpeg" alt="Personalized Beauty Consultation" class="service-image">
-        <div class="service-image-overlay"></div>
-      </div>
-      <div class="service-content-luxury">
-        <h2>Beauty Consultation</h2>
-        <p>
-          Our one-on-one beauty consultation provides personalized advice tailored
-          to your unique features and style preferences. Our expert consultants will
-          help you discover the perfect hair, makeup, and beauty solutions that
-          enhance your natural beauty and boost your confidence.
-        </p>
-        <a href="https://wa.me/2348143372835" class="btn btn-gold" target="_blank">BOOK AN APPOINTMENT</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section cta-section">
+  <section class="related-products" id="relatedSection" style="display: none;">
     <div class="container">
-      <h2>Ready to Transform Your Look?</h2>
-      <p>Book a consultation or service today and experience luxury beauty.</p>
-      <a href="https://wa.me/2348143372835" class="btn btn-primary" target="_blank">Contact Us</a>
+      <div class="section-title">
+        <h2>You May Also Like</h2>
+      </div>
+      <div class="related-grid" id="relatedGrid"></div>
     </div>
   </section>
 
@@ -205,7 +131,5 @@
     </svg>
   </a>
 
-  <script type="module" src="/js/navigation.js"></script>
-  <script type="module" src="/js/cart.js"></script>
 </body>
 </html>
