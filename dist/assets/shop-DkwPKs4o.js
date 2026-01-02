@@ -1,4 +1,4 @@
-import{f as m,a as f}from"./cart-DRHFGjFt.js";/* empty css             */import{g as v,a as h}from"./supabase-client-plvbIh6d.js";let l=[],r=[],n={categoryId:null,minPrice:null,maxPrice:null,inStock:!1};const k=new URLSearchParams(window.location.search),u=k.get("category");async function E(){const a=await v(),c=document.getElementById("categoryFilters");if(c.innerHTML=`
+import{f as m,a as f}from"./cart-CPXUeT1p.js";/* empty css             */import{g as v,a as h}from"./supabase-client-plvbIh6d.js";let l=[],r=[],n={categoryId:null,minPrice:null,maxPrice:null,inStock:!1};const k=new URLSearchParams(window.location.search),u=k.get("category");async function E(){const a=await v(),c=document.getElementById("categoryFilters");if(c.innerHTML=`
         <label class="filter-option">
           <input type="radio" name="category" value="" checked>
           <span>All Products</span>
