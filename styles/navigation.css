@@ -19,7 +19,7 @@
   color: var(--color-white);
 }
 
-.navbar-transparent .nav-logo {
+.navbar-transparent .nav-logo-img {
   filter: brightness(0) invert(1);
 }
 
@@ -35,14 +35,20 @@
 }
 
 .nav-logo {
-  font-family: var(--font-primary);
-  font-size: 1.5rem;
-  font-weight: 400;
+  display: flex;
+  align-items: center;
   transition: var(--transition-fast);
 }
 
-.nav-logo:hover {
-  color: var(--color-gold);
+.nav-logo-img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition-fast);
+}
+
+.nav-logo:hover .nav-logo-img {
+  opacity: 0.8;
 }
 
 .nav-menu {
@@ -117,6 +123,10 @@
 }
 
 @media (max-width: 768px) {
+  .nav-logo-img {
+    height: 38px;
+  }
+
   .nav-menu {
     position: fixed;
     top: 73px;
@@ -150,5 +160,11 @@
 
   .navbar-transparent .nav-menu .nav-link {
     color: var(--color-white);
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-logo-img {
+    height: 32px;
   }
 }
