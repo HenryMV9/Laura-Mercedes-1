@@ -118,13 +118,7 @@
   border-color: var(--color-gold);
 }
 
-.slideshow-nav.prev {
-  left: var(--spacing-lg);
-}
 
-.slideshow-nav.next {
-  right: var(--spacing-lg);
-}
 
 .slideshow-dots {
   position: absolute;
