@@ -147,6 +147,14 @@
   transform: scale(1.2);
 }
 
+.slideshow-nav.prev {
+  left: var(--spacing-lg);
+}
+
+.slideshow-nav.next {
+  right: var(--spacing-lg);
+}
+
 .container {
   padding-left: 0;
   padding-right: 0;
