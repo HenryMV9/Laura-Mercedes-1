@@ -111,6 +111,7 @@
           <div class="results-count" id="resultsCount">
             Loading products...
           </div>
+          <div id="currencySelector"></div>
           <select class="sort-select" id="sortSelect">
             <option value="newest">Newest First</option>
             <option value="price-low">Price: Low to High</option>
@@ -192,7 +193,9 @@
   <script type="module" src="/js/cart.js"></script>
   <script type="module">
     import { getCategories, getProducts } from '/js/supabase-client.js';
-    import { formatCurrency, addToCart } from '/js/cart.js';
+    import { addToCart } from '/js/cart.js';
+    import { initializeCurrency, formatCurrency as formatPrice } from '/js/currency.js';
+    import { createCurrencySelector } from '/js/currency-selector.js';
 
     let allProducts = [];
     let filteredProducts = [];
@@ -304,8 +307,8 @@
                 <a href="/product.html?slug=${product.slug}">${product.name}</a>
               </h3>
               <div class="product-price">
-                <span class="current-price">${formatCurrency(product.price)}</span>
-                ${hasDiscount ? `<span class="original-price">${formatCurrency(product.compare_at_price)}</span>` : ''}
+                <span class="current-price">${formatPrice(product.price)}</span>
+                ${hasDiscount ? `<span class="original-price">${formatPrice(product.compare_at_price)}</span>` : ''}
               </div>
             </div>
           </div>
@@ -396,6 +399,14 @@
     document.getElementById('filterClose').addEventListener('click', closeFilters);
 
     document.getElementById('filtersBackdrop').addEventListener('click', closeFilters);
+
+    await initializeCurrency();
+
+    const currencySelector = createCurrencySelector((newCurrency) => {
+      renderProducts();
+    });
+
+    document.getElementById('currencySelector').appendChild(currencySelector);
 
     await loadCategories();
     await loadProducts();
