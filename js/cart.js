@@ -70,14 +70,7 @@ export function getCartItemCount() {
   return cart.reduce((count, item) => count + item.quantity, 0);
 }
 
-export function formatCurrency(amount) {
-  return new Intl.NumberFormat('en-NG', {
-    style: 'currency',
-    currency: 'NGN',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  }).format(amount);
-}
+export { formatCurrency } from './currency.js';
 
 function updateCartBadge() {
   const badge = document.querySelector('.cart-badge');

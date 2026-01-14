@@ -134,9 +134,14 @@
   <script type="module">
     import { getProductBySlug, getProducts } from '/js/supabase-client.js';
     import { formatCurrency, addToCart } from '/js/cart.js';
+    import { initializeCurrency } from '/js/currency.js';
+    import { createCurrencySelector } from '/js/currency-selector.js';
 
     const urlParams = new URLSearchParams(window.location.search);
     const productSlug = urlParams.get('slug');
+    let currentProduct = null;
+
+    await initializeCurrency();
 
     async function loadProduct() {
       if (!productSlug) {
@@ -161,6 +166,7 @@
         return;
       }
 
+      currentProduct = product;
       document.title = `${product.name} - Luxury Atelier`;
 
       const galleryImages = [
@@ -210,6 +216,8 @@
               <span class="status-dot ${!product.in_stock ? 'out-of-stock' : ''}"></span>
               <span>${product.in_stock ? 'In Stock' : 'Out of Stock'}</span>
             </div>
+
+            <div id="currencySelector" style="margin: 1.5rem 0; padding: 1rem; background: #f9f9f9; border-radius: 8px;"></div>
 
             <div class="product-description">
               <h3>Description</h3>
@@ -302,7 +310,36 @@
         });
       }
 
+      const currencySelectorContainer = document.getElementById('currencySelector');
+      if (currencySelectorContainer) {
+        const selector = createCurrencySelector(() => {
+          refreshPrices();
+        });
+        currencySelectorContainer.innerHTML = '';
+        currencySelectorContainer.appendChild(selector);
+      }
+
       loadRelatedProducts(product.category_id, product.id);
+    }
+
+    function refreshPrices() {
+      if (!currentProduct) return;
+
+      const priceElements = document.querySelectorAll('.product-current-price, .current-price');
+      priceElements.forEach(el => {
+        if (el.classList.contains('product-current-price')) {
+          el.textContent = formatCurrency(currentProduct.price);
+        }
+      });
+
+      const comparePriceElements = document.querySelectorAll('.product-original-price, .original-price');
+      comparePriceElements.forEach(el => {
+        if (el.classList.contains('product-original-price') && currentProduct.compare_at_price) {
+          el.textContent = formatCurrency(currentProduct.compare_at_price);
+        }
+      });
+
+      loadRelatedProducts(currentProduct.category_id, currentProduct.id);
     }
 
     async function loadRelatedProducts(categoryId, currentProductId) {

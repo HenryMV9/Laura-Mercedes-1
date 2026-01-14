@@ -1,5 +1,7 @@
 import { getCart, updateCartItemQuantity, removeFromCart, formatCurrency, getCartTotal, clearCart } from './cart.js';
 import { createOrder } from './supabase-client.js';
+import { initializeCurrency } from './currency.js';
+import { createCurrencySelector } from './currency-selector.js';
 
 const cartItemsContainer = document.getElementById('cartItems');
 const subtotalElement = document.getElementById('subtotal');
@@ -239,4 +241,19 @@ if (quickCheckoutForm) {
 
 window.addEventListener('cartUpdated', renderCartItems);
 
-renderCartItems();
+async function initializePage() {
+  await initializeCurrency();
+
+  const currencySelectorContainer = document.getElementById('currencySelector');
+  if (currencySelectorContainer) {
+    const selector = createCurrencySelector(() => {
+      renderCartItems();
+    });
+    currencySelectorContainer.innerHTML = '';
+    currencySelectorContainer.appendChild(selector);
+  }
+
+  renderCartItems();
+}
+
+initializePage();
