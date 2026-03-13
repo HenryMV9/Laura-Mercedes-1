@@ -1,4 +1,4 @@
-import{a as g}from"./cart-DaXgv_wZ.js";/* empty css             */import{b as v,a as y}from"./supabase-client-boJWN7_a.js";import{i as h,f as s,c as f}from"./currency-selector-D4CMqF52.js";const b=new URLSearchParams(window.location.search),p=b.get("slug");let r=null;await h();async function $(){if(!p){document.getElementById("productContent").innerHTML=`
+import{a as g}from"./cart-DaXgv_wZ.js";/* empty css             */import{b as v,a as y}from"./supabase-client-D2vQk3vi.js";import{i as h,f as s,c as f}from"./currency-selector-D4CMqF52.js";const b=new URLSearchParams(window.location.search),p=b.get("slug");let r=null;await h();async function $(){if(!p){document.getElementById("productContent").innerHTML=`
           <div style="text-align: center; padding: 50px 0;">
             <p>Product not found.</p>
             <a href="/shop.html" class="btn btn-primary">Return to Shop</a>
